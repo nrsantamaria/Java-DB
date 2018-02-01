@@ -6,59 +6,59 @@ import java.util.Objects;
 
 public class Task {
 
-    private String description;
-    private boolean completed;
-    private LocalDateTime createdAt;
-    private int id;
+  private String description;
+  private boolean completed;
+  private LocalDateTime createdAt;
+  private int id;
 
-    public Task(String description){
-        this.description = description;
-        this.completed = false;
-        this.createdAt = LocalDateTime.now();
-    }
+  public Task(String description) {
+    this.description = description;
+    this.completed = false;
+    this.createdAt = LocalDateTime.now();
+  }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+  public void setDescription(String description) {
+    this.description = description;
+  }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+  public void setId(int id) {
+    this.id = id;
+  }
 
-    @Override
-    public boolean equals(Object o) {
-      if (this == o) return true;
-      if (o == null || getClass() != o.getClass()) return false;
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
 
-      Task task = (Task) o;
+    Task task = (Task) o;
 
-      if (completed != task.completed) return false;
-      if (id != task.id) return false;
-      return description != null ? description.equals(task.description) : task.description == null;
-    }
+    if (completed != task.completed) return false;
+    if (id != task.id) return false;
+    return description != null ? description.equals(task.description) : task.description == null;
+  }
 
-    @Override
-    public int hashCode() {
-      int result = description != null ? description.hashCode() : 0;
-      result = 31 * result + (completed ? 1 : 0);
-      result = 31 * result + id;
-      return result;
-    }
+  @Override
+  public int hashCode() {
+    int result = description != null ? description.hashCode() : 0;
+    result = 31 * result + (completed ? 1 : 0);
+    result = 31 * result + id;
+    return result;
+  }
 
-    public String getDescription() {
-      return this.description;
-    }
+  public String getDescription() {
+    return this.description;
+  }
 
-    public boolean getCompleted(){
-      return this.completed;
-    }
+  public boolean getCompleted() {
+    return this.completed;
+  }
 
-    public LocalDateTime getCreatedAt() {
-      return this.createdAt;
-    }
+  public LocalDateTime getCreatedAt() {
+    return this.createdAt;
+  }
 
-    public int getId() {
-      return this.id;
-    }
+  public int getId() {
+    return this.id;
+  }
 
 }
