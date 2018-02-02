@@ -59,4 +59,36 @@ public class Sql2oTaskDaoTest {
   public void noTasksFound() throws Exception {
     assertEquals(0, taskDao.getAll().size());
   }
+
+  @Test
+  public void updateATask() throws Exception {
+    Task task = new Task("mow the lawn");
+    taskDao.add(task);
+
+    taskDao.update(task.getId(), "cut grass");
+    Task updatedTask = taskDao.findById(task.getId());
+    assertEquals("cut grass", updatedTask.getDescription());
+  }
+
+  @Test
+  public void deleteATask() throws Exception {
+    Task task = new Task("mow the lawn");
+    Task secondTask = new Task("wash the dishes");
+    taskDao.add(task);
+    taskDao.add(secondTask);
+
+    taskDao.deleteById(task.getId());
+    assertEquals(1, taskDao.getAll().size());
+  }
+
+  @Test
+  public void deleteAllTasks() throws Exception {
+    Task task = new Task("mow the lawn");
+    Task secondTask = new Task("wash the dishes");
+    taskDao.add(task);
+    taskDao.add(secondTask);
+
+    taskDao.clearAllTasks();
+    assertEquals(0, taskDao.getAll().size());
+  }
 }

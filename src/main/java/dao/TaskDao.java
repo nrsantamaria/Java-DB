@@ -12,6 +12,12 @@ public interface TaskDao {
   List<Task> getAll();
 
   Task findById(int id);
+
+  void update(int id, String newDescription);
+
+  void deleteById(int id);
+
+  void clearAllTasks();
   //update
   //  void update(int id, String content);
   //delete
