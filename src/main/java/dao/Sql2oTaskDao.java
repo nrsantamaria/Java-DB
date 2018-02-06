@@ -16,7 +16,7 @@ public class Sql2oTaskDao implements TaskDao {
 
   @Override
   public void add(Task task) {
-    String sql = "INSERT INTO tasks (description) VALUES (:description)";
+    String sql = "INSERT INTO tasks (description, categoryId) VALUES (:description, :categoryId)";
     try(Connection con = sql2o.open()) {
       int id = (int) con.createQuery(sql, true)
                         .bind(task)
@@ -46,7 +46,7 @@ public class Sql2oTaskDao implements TaskDao {
   }
 
   @Override
-  public void update(int id, String newDescription) {
+  public void update(int id, String newDescription, int categoryId) {
     String sql = "UPDATE tasks SET description = :description WHERE id=:id";
     try (Connection con = sql2o.open()){
       con.createQuery(sql)

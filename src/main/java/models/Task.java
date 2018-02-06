@@ -10,11 +10,12 @@ public class Task {
   private boolean completed;
   private LocalDateTime createdAt;
   private int id;
+  private int categoryId;
 
-  public Task(String description) {
+  public Task(String description, int categoryId) {
     this.description = description;
     this.completed = false;
-    this.createdAt = LocalDateTime.now();
+    this.categoryId = categoryId;
   }
 
   public void setDescription(String description) {
@@ -23,6 +24,10 @@ public class Task {
 
   public void setId(int id) {
     this.id = id;
+  }
+
+  public void setCategoryId(int categoryId) {
+    this.categoryId = categoryId;
   }
 
   @Override
@@ -34,6 +39,7 @@ public class Task {
 
     if (completed != task.completed) return false;
     if (id != task.id) return false;
+    if (categoryId != task.categoryId) return false;
     return description != null ? description.equals(task.description) : task.description == null;
   }
 
@@ -42,6 +48,7 @@ public class Task {
     int result = description != null ? description.hashCode() : 0;
     result = 31 * result + (completed ? 1 : 0);
     result = 31 * result + id;
+    result = 31 * result + categoryId;
     return result;
   }
 
@@ -53,12 +60,11 @@ public class Task {
     return this.completed;
   }
 
-  public LocalDateTime getCreatedAt() {
-    return this.createdAt;
-  }
-
   public int getId() {
     return this.id;
   }
 
+  public int getCategoryId() {
+    return categoryId;
+  }
 }
