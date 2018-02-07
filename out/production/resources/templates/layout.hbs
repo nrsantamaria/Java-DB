@@ -4,23 +4,38 @@
     <title>{{#block "title"}}Blog{{/block}}</title>
 
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+
 </head>
 <body>
 <ul class="nav nav-tabs">
-    <li role="presentation" class="active"><a href="#">Home</a></li>
-    <li role="presentation"><a href="/tasks/new">Add a New Task</a></li>
+    <li role="presentation" class="active"><a href="/">Home</a></li>
+
+    <li role="presentation" class="dropdown">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Category Menu <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            {{#if categories}}
+                {{#each categories}}
+                    <li class="dropdown-item"><a href="/categories/{{id}}">{{name}}</a></li>
+                {{/each}}
+                <li class="dropdown-item" ><a href="/categories/new">Add a Category</a></li>
+
+            {{else}}
+                <li class="dropdown-item"><a href="/categories/new">Add a Category</a></li>
+            {{/if}}
+        </ul>
+    </li>
 </ul>
 <div class="container">
     <!--begin main template-->
     <div class="page-header">
-        <img src="/images/rawpixel-com-296621.jpg" width="70%" alt="https://unsplash.com/search/task?photo=Lh_bn9SgRSY">
         <h1>Welcome to my To Do List. <small>Let's be organized, focused, and efficient.</small></h1>
     </div>
 
     <div class="col-md-12">
         {{#block "content"}}
         {{/block}}
-
     </div>
 </div>
 <!--end main template-->
@@ -31,5 +46,7 @@
         </div>
     </footer>
     </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     </html>
 {{/block}}

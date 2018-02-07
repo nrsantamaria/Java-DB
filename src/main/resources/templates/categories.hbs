@@ -1,0 +1,14 @@
+{{#partial "content"}}
+
+    <h1>All the categories!</h1>
+
+    {{#if categories}}
+        {{#each categories}}
+            <p>{{ name }} <a href="/categories/{{id}}">read more...</a></p>
+        {{/each}}
+    {{else}}
+        <p>No categories!</p>
+    {{/if}}
+{{/partial}}
+
+{{> layout.hbs}}

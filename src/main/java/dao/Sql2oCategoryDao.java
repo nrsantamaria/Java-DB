@@ -84,10 +84,10 @@ public class Sql2oCategoryDao implements CategoryDao {
 
   @Override
   public List<Task> getAllTasksByCategory(int categoryId) {
-    String sql = "SELECT * FROM tasks WHERE categoryid = :categoryId";
+    String sql = "SELECT * FROM tasks WHERE categoryId = :categoryId";
     try (Connection con = sql2o.open()){
       return con.createQuery(sql)
-          .addParameter("categoryid", categoryId)
+          .addParameter("categoryId", categoryId)
           .executeAndFetch(Task.class);
     }
   }

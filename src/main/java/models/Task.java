@@ -40,12 +40,12 @@ public class Task {
     if (completed != task.completed) return false;
     if (id != task.id) return false;
     if (categoryId != task.categoryId) return false;
-    return description != null ? description.equals(task.description) : task.description == null;
+    return description.equals(task.description);
   }
 
   @Override
   public int hashCode() {
-    int result = description != null ? description.hashCode() : 0;
+    int result = description.hashCode();
     result = 31 * result + (completed ? 1 : 0);
     result = 31 * result + id;
     result = 31 * result + categoryId;
